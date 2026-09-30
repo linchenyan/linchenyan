@@ -3,127 +3,129 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>AnimeVerse | 夢幻動漫世界</title>
+    <title>ACGN 狂熱地帶 | Anime World</title>
     <style>
-        /* 全域樣式設定 */
+        /* 全域樣式與動漫風配色 */
         :root {
-            --primary: #ff007f;
-            --secondary: #7000ff;
-            --dark: #0a051b;
-            --text: #ffffff;
-            --glass: rgba(255, 255, 255, 0.05);
-            --border: rgba(255, 255, 255, 0.1);
+            --bg-color: #0b0c10;
+            --card-bg: #1f2833;
+            --text-color: #c5a059;
+            --neon-cyan: #66fcf1;
+            --neon-blue: #45a29e;
+            --white: #ffffff;
         }
 
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
-            font-family: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+            font-family: 'PingFang TC', 'Microsoft JhengHei', sans-serif;
         }
 
         body {
-            background-color: var(--dark);
-            color: var(--text);
+            background-color: var(--bg-color);
+            color: var(--white);
             overflow-x: hidden;
-            background-image: 
-                radial-gradient(at 10% 20%, rgba(112, 0, 255, 0.15) 0px, transparent 50%),
-                radial-gradient(at 90% 80%, rgba(255, 0, 127, 0.15) 0px, transparent 50%);
-            background-attachment: fixed;
         }
 
         /* 導覽列 */
-        nav {
+        header {
             display: flex;
             justify-content: space-between;
             align-items: center;
             padding: 20px 8%;
-            background: rgba(10, 5, 27, 0.7);
-            backdrop-filter: blur(10px);
+            background-color: rgba(11, 12, 16, 0.95);
             position: fixed;
             width: 100%;
             top: 0;
             z-index: 1000;
-            border-bottom: 1px solid var(--border);
+            border-bottom: 2px solid var(--neon-cyan);
+            box-shadow: 0 0 15px rgba(102, 252, 241, 0.3);
         }
 
         .logo {
             font-size: 24px;
-            font-weight: 800;
-            letter-spacing: 2px;
-            background: linear-gradient(45deg, var(--primary), var(--secondary));
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
+            font-weight: bold;
+            color: var(--neon-cyan);
+            text-shadow: 0 0 10px var(--neon-cyan);
+            text-decoration: none;
         }
 
-        .nav-links {
+        nav ul {
             display: flex;
             list-style: none;
-            gap: 30px;
         }
 
-        .nav-links a {
-            color: var(--text);
+        nav ul li {
+            margin-left: 20px;
+        }
+
+        nav ul li a {
+            color: var(--white);
             text-decoration: none;
-            font-weight: 500;
+            font-size: 16px;
             transition: 0.3s;
-            opacity: 0.8;
         }
 
-        .nav-links a:hover {
-            opacity: 1;
-            color: var(--primary);
-            text-shadow: 0 0 10px var(--primary);
+        nav ul li a:hover {
+            color: var(--neon-cyan);
+            text-shadow: 0 0 5px var(--neon-cyan);
         }
 
-        /* 首頁主視覺區 */
+        /* 主視覺區 (Hero Section) */
         .hero {
             height: 100vh;
+            background: linear-gradient(rgba(0,0,0,0.6), rgba(11, 12, 16, 1)), 
+                        url('https://unsplash.com') no-repeat center center/cover;
             display: flex;
             flex-direction: column;
             justify-content: center;
             align-items: center;
             text-align: center;
             padding: 0 20px;
-            position: relative;
         }
 
         .hero h1 {
-            font-size: 4rem;
-            font-weight: 900;
+            font-size: 3rem;
             margin-bottom: 20px;
-            text-transform: uppercase;
-            letter-spacing: 4px;
-            text-shadow: 0 0 20px rgba(112, 0, 255, 0.6);
+            letter-spacing: 2px;
+            text-shadow: 2px 2px 10px rgba(0,0,0,0.8);
+        }
+
+        .hero h1 span {
+            color: var(--neon-cyan);
+            text-shadow: 0 0 20px var(--neon-cyan);
         }
 
         .hero p {
             font-size: 1.2rem;
+            margin-bottom: 30px;
             max-width: 600px;
-            margin-bottom: 40px;
-            opacity: 0.8;
-            line-height: 1.6;
+            color: #ccc;
         }
 
         .btn {
-            padding: 12px 35px;
-            font-size: 1rem;
-            font-weight: 600;
-            color: white;
-            background: linear-gradient(45deg, var(--primary), var(--secondary));
-            border: none;
-            border-radius: 50px;
+            display: inline-block;
+            padding: 12px 30px;
+            background: transparent;
+            color: var(--neon-cyan);
+            border: 2px solid var(--neon-cyan);
+            font-size: 16px;
+            font-weight: bold;
+            text-decoration: none;
+            border-radius: 5px;
+            transition: 0.4s;
             cursor: pointer;
-            box-shadow: 0 5px 20px rgba(255, 0, 127, 0.4);
-            transition: 0.3s transform, 0.3s box-shadow;
+            box-shadow: 0 0 10px rgba(102, 252, 241, 0.2);
         }
 
         .btn:hover {
-            transform: translateY(-3px);
-            box-shadow: 0 8px 25px rgba(255, 0, 127, 0.6);
+            background: var(--neon-cyan);
+            color: var(--bg-color);
+            box-shadow: 0 0 25px var(--neon-cyan);
         }
 
-        /* 內容區塊 */
+        /* 本季新番 / 熱門推薦卡片區 */
         .container {
             max-width: 1200px;
             margin: 0 auto;
@@ -132,7 +134,7 @@
 
         .section-title {
             text-align: center;
-            font-size: 2.5rem;
+            font-size: 2rem;
             margin-bottom: 50px;
             position: relative;
         }
@@ -142,12 +144,11 @@
             display: block;
             width: 60px;
             height: 4px;
-            background: var(--primary);
+            background: var(--neon-cyan);
             margin: 10px auto 0;
-            border-radius: 2px;
+            box-shadow: 0 0 10px var(--neon-cyan);
         }
 
-        /* 動漫卡片網格 */
         .anime-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
@@ -155,162 +156,190 @@
         }
 
         .anime-card {
-            background: var(--glass);
-            border: 1px solid var(--border);
-            border-radius: 20px;
+            background: var(--card-bg);
+            border-radius: 10px;
             overflow: hidden;
-            backdrop-filter: blur(5px);
-            transition: 0.4s;
+            transition: 0.3s;
+            border: 1px solid rgba(255,255,255,0.1);
         }
 
         .anime-card:hover {
-            transform: translateY(-10px) scale(1.02);
-            border-color: var(--primary);
-            box-shadow: 0 10px 30px rgba(112, 0, 255, 0.2);
+            transform: translateY(-10px);
+            border-color: var(--neon-cyan);
+            box-shadow: 0 5px 20px rgba(102, 252, 241, 0.2);
         }
 
-        .card-img {
+        .anime-img {
             width: 100%;
             height: 350px;
-            background-size: cover;
-            background-position: center;
-            position: relative;
+            object-fit: cover;
         }
 
-        /* 預設卡片背景色（在您換成自己的動漫圖片前提供視覺外觀） */
-        .img-1 { background-image: linear-gradient(to bottom, transparent, var(--dark)), url('https://picsum.photos'); }
-        .img-2 { background-image: linear-gradient(to bottom, transparent, var(--dark)), url('https://picsum.photos'); }
-        .img-3 { background-image: linear-gradient(to bottom, transparent, var(--dark)), url('https://picsum.photos'); }
-
-        .card-info {
-            padding: 25px;
+        .anime-info {
+            padding: 20px;
         }
 
-        .card-tag {
-            font-size: 0.8rem;
-            color: var(--primary);
-            font-weight: 700;
-            text-transform: uppercase;
+        .anime-info h3 {
+            font-size: 1.2rem;
             margin-bottom: 10px;
-            display: inline-block;
+            color: var(--white);
         }
 
-        .card-title {
-            font-size: 1.4rem;
-            margin-bottom: 10px;
-        }
-
-        .card-desc {
+        .anime-info p {
             font-size: 0.9rem;
-            opacity: 0.7;
+            color: #aaa;
             line-height: 1.5;
+            margin-bottom: 15px;
+        }
+
+        .tags {
+            display: flex;
+            gap: 5px;
+        }
+
+        .tag {
+            font-size: 0.8rem;
+            background: rgba(102, 252, 241, 0.1);
+            color: var(--neon-cyan);
+            padding: 3px 8px;
+            border-radius: 3px;
+            border: 1px solid rgba(102, 252, 241, 0.3);
         }
 
         /* 頁尾 */
         footer {
+            background: #050508;
             text-align: center;
-            padding: 40px;
-            border-top: 1px solid var(--border);
+            padding: 30px;
             font-size: 0.9rem;
-            opacity: 0.6;
-            background: rgba(5, 2, 15, 0.9);
+            color: #666;
+            border-top: 1px solid rgba(255,255,255,0.05);
         }
 
-        /* 響應式密技：手機版優化 */
-        @media (max-width: 768px) {
-            .hero h1 { font-size: 2.5rem; }
-            .nav-links { display: none; } /* 簡化手機版 */
+        footer span {
+            color: var(--neon-blue);
         }
     </style>
 </head>
 <body>
 
     <!-- 導覽列 -->
-    <nav>
-        <div class="logo">ANIMEVERSE</div>
-        <ul class="nav-links">
-            <li><a href="#">首頁</a></li>
-            <li><a href="#trending">熱門推薦</a></li>
-            <li><a href="#">新番時間表</a></li>
-            <li><a href="#">討論區</a></li>
-        </ul>
-    </nav>
+    <header>
+        <a href="#" class="logo">ANIME.ZONE</a>
+        <nav>
+            <ul>
+                <li><a href="#">首頁</a></li>
+                <li><a href="#">本季新番</a></li>
+                <li><a href="#">動漫桌布</a></li>
+                <li><a href="#">討論區</a></li>
+            </ul>
+        </nav>
+    </header>
 
-    <!-- 首頁主視覺區 -->
+    <!-- 主視覺 banner -->
     <section class="hero">
-        <h1 id="hero-title">探索二次元極致世界</h1>
-        <p>歡迎來到極客與動漫愛好者的秘密基地。這裡匯集了最新、最熱門的番劇資訊與深度解析，開啟你的異世界冒險！</p>
-        <button class="btn" onclick="changeTheme()">切換能量色彩</button>
+        <h1>探索你的<span>二次元</span>世界</h1>
+        <p>追尋最新、最熱門的日本動畫與漫畫情報，與百萬同好一起燃燒你的宅之魂！</p>
+        <a href="#explore" class="btn">開啟傳送門</a>
     </section>
 
-    <!-- 熱門卡片區塊 -->
-    <section class="container" id="trending">
-        <h2 class="section-title">本季霸權強檔</h2>
+    <!-- 熱門推薦板塊 -->
+    <main class="container" id="explore">
+        <h2 class="section-title">本季強力推薦</h2>
+        
         <div class="anime-grid">
-            
             <!-- 卡片 1 -->
             <div class="anime-card">
-                <div class="card-img img-1"></div>
-                <div class="card-info">
-                    <span class="card-tag">冒險 / 奇幻</span>
-                    <h3 class="card-title">異世界冒險</h3>
-                    <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ1K4fxNGt2Bk0-7kIgKCmfV9kyLDbF6lOJ7P3mhD6XkA&s=10">
-                    <p class="card-desc">被迫傳送至未知大陸的主角，憑藉著獨特技能與夥伴們展開了一場充滿美食與戰鬥的史詩旅程。</p>
+                <img src="https://unsplash.com" alt="Anime" class="anime-img">
+                <div class="anime-info">
+                    <h3>異世界冒險譚</h3>
+                    <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTvCVDTk9O-CeKPnUYnuHRzMTwL3I41yAox-2HaA6ELDA&s=10">
+                    <p>轉生到異世界的主角，憑藉的技能，開啟了與夥伴們到處冒險的故事！</p>
+                    <div class="tags">
+                        <span class="tag">異世界</span>
+                        <span class="tag">奇幻</span>
+                        <span class="tag">冒險</span>
+                    </div>
                 </div>
             </div>
 
             <!-- 卡片 2 -->
             <div class="anime-card">
-                <div class="card-img img-2"></div>
-                <div class="card-info">
-                    <span class="card-tag">熱血 / 動作</span>
-                    <h3 class="card-title">我獨自升級</h3>
-                    <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRFRG4IR8-aIMDjjnOExb8cWJiXLjtOgZObm8FaiFM4VQ&s=10">
-                    <p class="card-desc">在充滿獵人的城市中，主角偏偏是最弱的E級獵人，誓言打破階級枷鎖、守護所愛之人。</p>
+                <img src="https://unsplash.com" alt="Anime" class="anime-img">
+                <div class="anime-info">
+                    <h3>青春熱血排球魂</h3>
+                    <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSc-l09-QQkcZWYiyc3qxo3zQhfGg6Li5_A1saMQxlj3A&s=10">
+                    <p>矮小的少年憑藉驚人的彈跳力，與冷酷的天才舉球員組成黃金搭檔，誓言帶領沒落的強豪學校重返全國大賽！</p>
+                    <div class="tags">
+                        <span class="tag">運動</span>
+                        <span class="tag">熱血</span>
+                        <span class="tag">校園</span>
+                    </div>
                 </div>
             </div>
 
             <!-- 卡片 3 -->
             <div class="anime-card">
-                <div class="card-img img-3"></div>
-                <div class="card-info">
-                    <span class="card-tag">愛情/校園</span>
-                    <h3 class="card-title">高中校園生活</h3>
-                    <img scr="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ4QWUTA8n1gMlgNpZ3U3UTxD27_R8ZNDqp_Qp1uEBF4Q&s=10">
-                    <p class="card-desc">上了高中，來到情竇初開時，遇到喜歡的人，努力追求愛人</p>
+                <img src="https://unsplash.com" alt="Anime" class="anime-img">
+                <div class="anime-info">
+                    <h3>霓虹都市：賽博編年史</h3>
+                    <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRzkp91vPDW31xEhNZdkJu0sOaOW8P2Rp5PqvV3ifVdJg&s=10">
+                    <p>在被巨型企業操控的未來科技都市中，底層少年安裝了軍用級生化義體，走上了成為傳奇邊緣行者的不歸路。</p>
+                    <div class="tags">
+                        <span class="tag">科幻</span>
+                        <span class="tag">賽博朋克</span>
+                        <span class="tag">動作</span>
+                    </div>
                 </div>
             </div>
-
-        </div>
-    </section>
-
+            
+            <!-- 卡片 4 -->
+            <div class="anime-card">
+                 <img src="https://unsplash.com" alt="Anime" class="anime-img">
+                 <div class="anime-info">
+                      <h3>不時輕聲地以俄語遮羞的鄰座艾莉同學<h3>
+                        <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcThNm-PQmDK8PolU6QxOpCcLiuWGbJb02_XWewj4kLdIw&s=10">
+                        <p>她有一個特別的習慣——每當對鄰座的男主角「久世政近」感到害羞或想撒嬌時，就會故意改用俄語說出真心話。</p>
+                        <div class="tags">
+                            <span class="tag">高中</span>
+                            <span class="tag">愛情</span>
+                            <span class="tag">人際互動</span>
+                        </div>
+                    </div>
+                </div>
+                <!-- 卡片 5 -->
+            <div class="anime-card">
+                 <img src="https://unsplash.com" alt="Anime" class="anime-img">
+                 <div class="anime-info">
+                      <h3>我獨自升級(Solo Leveling)<h3>
+                        <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRFRG4IR8-aIMDjjnOExb8cWJiXLjtOgZObm8FaiFM4VQ&s=10">
+                        <p>在一個充滿獵人的世界，主角是人類最弱兵器的E級獵人，他誓言想要守護心愛人。</p>
+                        <div class="tags">
+                            <span class="tag">動作</span>
+                            <span class="tag">熱血</span>
+                            <span class="tag">科幻</span>
+                        </div>
+                    </div>
+                </div>
+                    <!-- 卡片 6 -->
+            <div class="anime-card">
+                 <img src="https://unsplash.com" alt="Anime" class="anime-img">
+                 <div class="anime-info">
+                      <h3>無職轉生～到了異世界就拿出真本事～<h3>
+                        <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS4vmeY-95eya_0XpbcWFyLs_F9AVy6Kf357EdsiIP_WA&s=10">
+                        <p>講述一名34歲的日本無職尼特族男主角，在父母的喪禮當天因為沒有出席而被家人趕出家門。他在街上徘徊時，看到一輛卡車即將撞上幾名高中生，便奮不顧身衝上前去將人救開，自己卻不幸被卡車撞死。</p>
+                        <div class="tags">
+                            <span class="tag">動作</span>
+                            <span class="tag">熱血</span>
+                            <span class="tag">科幻</span>
+                        </div>
+                    </div>
+                </div>
+            </main>
     <!-- 頁尾 -->
     <footer>
-        <p>&copy; 2026 AnimeVerse. Made with 💖 for Anime Fans.</p>
+        <p>&copy; 2026 <span>ANIME.ZONE</span>. Made with ❤️ for Otaku.</p>
     </footer>
 
-    <!-- 互動 JavaScript -->
-    <script>
-        // 簡單的動態彩蛋：點擊按鈕切換網格霓虹主題色
-        function changeTheme() {
-            const root = document.documentElement;
-            // 隨機產生一組鮮艷的二次元霓虹色
-            const colors = [
-                {p: '#00ffcc', s: '#0077ff'}, // 賽博藍綠
-                {p: '#ff007f', s: '#7000ff'}, // 經典原色（魅惑粉藍）
-                {p: '#ffaa00', s: '#ff0055'}, // 活力橙紅
-                {p: '#00ff66', s: '#9900ff'}  // 螢光綠紫
-            ];
-            
-            const randomColor = colors[Math.floor(Math.random() * colors.length)];
-            
-            root.style.setProperty('--primary', randomColor.p);
-            root.style.setProperty('--secondary', randomColor.s);
-            
-            // 改變主標題文字增加互動感
-            const titles = ["同步率超越 400%！", "歡迎來到主宰領域！", "新番能量已充填！", "探索二次元極致世界"];
-            document.getElementById('hero-title').innerText = titles[Math.floor(Math.random() * titles.length)];
-        }
-    </script>
 </body>
 </html>
