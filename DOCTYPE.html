@@ -72,7 +72,7 @@
             text-shadow: 0 0 5px var(--neon-cyan);
         }
 
-        /* 主視覺區 */
+        /* 主視覺區 (Hero Section) */
         .hero {
             height: 100vh;
             background: linear-gradient(rgba(0,0,0,0.6), rgba(11, 12, 16, 1)), 
@@ -125,7 +125,40 @@
             box-shadow: 0 0 25px var(--neon-cyan);
         }
 
-        /* 卡片區 */
+        /* 季度切換按鈕區域樣式 */
+        .season-tabs {
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+            margin-bottom: 40px;
+        }
+
+        .tab-btn {
+            padding: 12px 30px;
+            background: #1f2833;
+            color: var(--white);
+            border: 2px solid var(--neon-blue);
+            font-size: 16px;
+            font-weight: bold;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: 0.3s;
+        }
+
+        .tab-btn:hover {
+            border-color: var(--neon-cyan);
+            color: var(--neon-cyan);
+            box-shadow: 0 0 10px rgba(102, 252, 241, 0.3);
+        }
+
+        .tab-btn.active {
+            background: var(--neon-cyan);
+            color: var(--bg-color);
+            border-color: var(--neon-cyan);
+            box-shadow: 0 0 20px var(--neon-cyan);
+        }
+
+        /* 本季新番 / 熱門推薦卡片區 */
         .container {
             max-width: 1200px;
             margin: 0 auto;
@@ -135,7 +168,7 @@
         .section-title {
             text-align: center;
             font-size: 2rem;
-            margin-bottom: 50px;
+            margin-bottom: 30px;
             position: relative;
         }
 
@@ -161,8 +194,15 @@
             overflow: hidden;
             transition: 0.3s;
             border: 1px solid rgba(255,255,255,0.1);
-            display: flex;
-            flex-direction: column;
+        }
+
+        /* 控制分季卡片隱存 */
+        .season-content {
+            display: none;
+        }
+        
+        .season-content.show {
+            display: block;
         }
 
         .anime-card:hover {
@@ -171,27 +211,15 @@
             box-shadow: 0 5px 20px rgba(102, 252, 241, 0.2);
         }
 
-        /* 統一影片與圖片元件的高度與黑底 */
-        .anime-media {
+        .anime-img {
             width: 100%;
-            height: 250px;
-            border: none;
-            background-color: #000;
+            height: 350px;
             object-fit: cover;
-        }
-
-        /* 針對動畫瘋外連圖片的特殊點擊樣式 */
-        .anime-link-img {
-            width: 100%;
-            height: 250px;
-            object-fit: cover;
-            cursor: pointer;
-            display: block;
+            background-color: #000; /* 防止影片比例不同時兩側留白難看 */
         }
 
         .anime-info {
             padding: 20px;
-            flex-grow: 1;
         }
 
         .anime-info h3 {
@@ -263,13 +291,21 @@
     <main class="container" id="explore">
         <h2 class="section-title">本季強力推薦</h2>
         
+        <!-- 季度切換按鈕群 -->
+        <div class="season-tabs">
+            <button class="tab-btn active" onclick="switchSeason('s1')">第一季</button>
+            <button class="tab-btn" onclick="switchSeason('s2')">第二季</button>
+            <button class="tab-btn" onclick="switchSeason('s3')">第三季</button>
+        </div>
+        
         <div class="anime-grid">
             <!-- 卡片 1  -->
-            <div class="anime-card">
-                <iframe src="https://youtube.com" class="anime-media" allowfullscreen></iframe>
+            <div class="anime-card season-content season-s1 show">
+                <!-- 加上了 controls 屬性以供點擊播放 -->
+                <iframe src="https://www.youtube.com/watch?v=-oTc2SUHIgI&list=PL12UaAf_xzfq1oMcxgfQ7UCMZiOf6KVw1&pp=0gcJCbwFa94AFGB0.mp4" class="anime-img" controls></iframe>
                 <div class="anime-info">
                     <h3>擁有超常技能的異世界流浪美食家</h3>
-                    <p>轉生到異世界的主角，憑藉現代網路超市技能，開啟了與傳說魔獸到處吃美食冒險的故事！</p>
+                    <p>轉生到異世界的主角，憑藉技能，開啟了與夥伴們到處冒險的故事！</p>
                     <div class="tags">
                         <span class="tag">異世界</span>
                         <span class="tag">奇幻</span>
@@ -278,11 +314,9 @@
                 </div>
             </div>
 
-            <!-- 卡片 2  --> 
-            <div class="anime-card">
-                <a href="https://gamer.com.tw" target="_blank">
-                    <img src="https://gstatic.com" alt="排球少年" class="anime-link-img">
-                </a>
+            <!-- 卡片 2 -->
+            <div class="anime-card season-content season-s2">
+                <iframe src="https://www.youtube.com/watch?v=tK31fWOoWSY&list=PLC18xlbCdwtRHQtvBo5_38UBmtmvxHa9r" class="anime-img" controls></iframe>
                 <div class="anime-info">
                     <h3>青春熱血排球魂</h3>
                     <p>矮小的少年憑藉驚人的彈跳力，與冷酷的天才舉球員組成黃金搭檔，誓言帶領沒落的強豪學校重返全國大賽！</p>
@@ -294,21 +328,20 @@
                 </div>
             </div>    
 
-            <!-- 卡片 3  -->
-            <div class="anime-card">
-                <iframe src="https://youtube.com" class="anime-media" allowfullscreen></iframe>
+            <!-- 卡片 3 -->
+            <div class="anime-card season-content season-s3">
+                <iframe src="https://www.youtube.com/watch?v=shused6I4S8&pp=ygUM6Im-5Yip5ZCM5a24.mp4" class="anime-img" controls></iframe>
                 <div class="anime-info">
-                    <h3>阿波連同學點點點</h3>
-                    <p>鄰座的阿波連玲奈同學，是個「不擅長拿捏距離感」的女孩子。一段充滿反差萌的校園日常喜劇就此展開！</p>
+                    <h3>不時輕聲地以俄語遮羞的鄰座艾莉同學</h3>
+                    <p>坐在隔壁的日俄混血美少女總是對主角投以冷淡目光，卻偶爾用俄語低聲撒嬌。殊不知，主角的俄語聽力其實是母語等級！</p>
                     <div class="tags">
                         <span class="tag">校園</span>
-                        <span class="tag">日常</span>
+                        <span class="tag">戀愛</span>
                         <span class="tag">喜劇</span>
                     </div>
                 </div>
             </div>
-        </div>
-    </main>
+          </main>
 
     <!-- 頁尾 -->
     <footer>
@@ -316,4 +349,5 @@
     </footer>
 
 </body>
-</html>
+</html>    
+
