@@ -72,7 +72,7 @@
             text-shadow: 0 0 5px var(--neon-cyan);
         }
 
-        /* 主視覺區 (Hero Section) */
+        /* 主視覺區 */
         .hero {
             height: 100vh;
             background: linear-gradient(rgba(0,0,0,0.6), rgba(11, 12, 16, 1)), 
@@ -125,7 +125,7 @@
             box-shadow: 0 0 25px var(--neon-cyan);
         }
 
-        /* 本季新番 / 熱門推薦卡片區 */
+        /* 卡片區 */
         .container {
             max-width: 1200px;
             margin: 0 auto;
@@ -161,6 +161,8 @@
             overflow: hidden;
             transition: 0.3s;
             border: 1px solid rgba(255,255,255,0.1);
+            display: flex;
+            flex-direction: column;
         }
 
         .anime-card:hover {
@@ -169,14 +171,27 @@
             box-shadow: 0 5px 20px rgba(102, 252, 241, 0.2);
         }
 
-        .anime-img {
+        /* 統一影片與圖片元件的高度與黑底 */
+        .anime-media {
             width: 100%;
-            height: 350px;
+            height: 250px;
+            border: none;
+            background-color: #000;
             object-fit: cover;
+        }
+
+        /* 針對動畫瘋外連圖片的特殊點擊樣式 */
+        .anime-link-img {
+            width: 100%;
+            height: 250px;
+            object-fit: cover;
+            cursor: pointer;
+            display: block;
         }
 
         .anime-info {
             padding: 20px;
+            flex-grow: 1;
         }
 
         .anime-info h3 {
@@ -214,6 +229,7 @@
             font-size: 0.9rem;
             color: #666;
             border-top: 1px solid rgba(255,255,255,0.05);
+            margin-top: 50px;
         }
 
         footer span {
@@ -248,13 +264,12 @@
         <h2 class="section-title">本季強力推薦</h2>
         
         <div class="anime-grid">
-            <!-- 卡片 1 -->
+            <!-- 卡片 1  -->
             <div class="anime-card">
-                <video src="https://www.youtube.com/watch?v=-oTc2SUHIgI&list=PL12UaAf_xzfq1oMcxgfQ7UCMZiOf6KVw1&pp=0gcJCbwFa94AFGB0.mp4" alt="Anime" class="anime-img"></video>
+                <iframe src="https://youtube.com" class="anime-media" allowfullscreen></iframe>
                 <div class="anime-info">
                     <h3>擁有超常技能的異世界流浪美食家</h3>
-                    <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTvCVDTk9O-CeKPnUYnuHRzMTwL3I41yAox-2HaA6ELDA&s=10">
-                    <p>轉生到異世界的主角，憑藉技能，開啟了與夥伴們到處冒險的故事！</p>
+                    <p>轉生到異世界的主角，憑藉現代網路超市技能，開啟了與傳說魔獸到處吃美食冒險的故事！</p>
                     <div class="tags">
                         <span class="tag">異世界</span>
                         <span class="tag">奇幻</span>
@@ -263,12 +278,13 @@
                 </div>
             </div>
 
-            <!-- 卡片 2 -->
+            <!-- 卡片 2  --> 
             <div class="anime-card">
-                <video src="https://ani.gamer.com.tw/animeRef.php?sn=112915&kw=%E6%8E%92%E7%90%83%E5%B0%91%E5%B9%B4&token=02fc3c2475cb3e34dfd154f4bc9e2e7359713647827fe24f6ac5d385.mp4" alt="Anime" class="anime-img"></video>
+                <a href="https://gamer.com.tw" target="_blank">
+                    <img src="https://gstatic.com" alt="排球少年" class="anime-link-img">
+                </a>
                 <div class="anime-info">
                     <h3>青春熱血排球魂</h3>
-                    <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSc-l09-QQkcZWYiyc3qxo3zQhfGg6Li5_A1saMQxlj3A&s=10">
                     <p>矮小的少年憑藉驚人的彈跳力，與冷酷的天才舉球員組成黃金搭檔，誓言帶領沒落的強豪學校重返全國大賽！</p>
                     <div class="tags">
                         <span class="tag">運動</span>
@@ -277,52 +293,26 @@
                     </div>
                 </div>
             </div>    
-            <!-- 卡片 3 -->
+
+            <!-- 卡片 3  -->
             <div class="anime-card">
-                <video src="https://www.youtube.com/watch?v=shused6I4S8&pp=ygUM6Im-5Yip5ZCM5a24.mp4" alt="Anime" class="anime-img"></video>
-                 <div class="anime-info">
-                      <h3>不時輕聲地以俄語遮羞的鄰座艾莉同學<h3>
-                        <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcThNm-PQmDK8PolU6QxOpCcLiuWGbJb02_XWewj4kLdIw&s=10">
-                        <p>她有一個特別的習慣——每當對鄰座的男主角「久世政近」感到害羞或想撒嬌時，就會故意改用俄語說出真心話。</p>
-                        <div class="tags">
-                            <span class="tag">高中</span>
-                            <span class="tag">愛情</span>
-                            <span class="tag">人際互動</span>
-                        </div>
+                <iframe src="https://youtube.com" class="anime-media" allowfullscreen></iframe>
+                <div class="anime-info">
+                    <h3>阿波連同學點點點</h3>
+                    <p>鄰座的阿波連玲奈同學，是個「不擅長拿捏距離感」的女孩子。一段充滿反差萌的校園日常喜劇就此展開！</p>
+                    <div class="tags">
+                        <span class="tag">校園</span>
+                        <span class="tag">日常</span>
+                        <span class="tag">喜劇</span>
                     </div>
                 </div>
-                <!-- 卡片 4 -->
-            <div class="anime-card">
-                 <video src="https://ani.gamer.com.tw/animeRef.php?sn=113458&kw=%E7%8D%A8%E8%87%AA%E5%8D%87%E7%B4%9A&token=016a5ae47dce2182e3f959ce143df967aa3e921e0ca5e2b56ac5d10b.mp4" alt="Anime" class="anime-img"></video>
-                 <div class="anime-info">
-                      <h3>我獨自升級(Solo Leveling)<h3>
-                        <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRFRG4IR8-aIMDjjnOExb8cWJiXLjtOgZObm8FaiFM4VQ&s=10">
-                        <p>在一個充滿獵人的世界，主角是人類最弱兵器的E級獵人，他誓言想要守護心愛人。</p>
-                        <div class="tags">
-                            <span class="tag">動作</span>
-                            <span class="tag">熱血</span>
-                            <span class="tag">科幻</span>
-                        </div>
-                    </div>
-                </div>
-                    <!-- 卡片 5 -->
-            <div class="anime-card">
-                 <video src="https://ani.gamer.com.tw/animeRef.php?sn=112541&kw=%E7%84%A1%E8%81%B7&token=0103bbccf590a8a3917c23f4edac75b1f72b7a67d0658c636ac5d149.mp4" alt="Anime" class="anime-img"></video>
-                 <div class="anime-info">
-                      <h3>無職轉生～到了異世界就拿出真本事～<h3>
-                        <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS4vmeY-95eya_0XpbcWFyLs_F9AVy6Kf357EdsiIP_WA&s=10">
-                        <p>講述一名34歲的日本無職尼特族男主角，在父母的喪禮當天因為沒有出席而被家人趕出家門。他在街上徘徊時，看到一輛卡車即將撞上幾名高中生，便奮不顧身衝上前去將人救開，自己卻不幸被卡車撞死。</p>
-                        <div class="tags">
-                            <span class="tag">動作</span>
-                            <span class="tag">熱血</span>
-                            <span class="tag">科幻</span>
-                        </div>
-                    </div>
-                </div>
-            </main>
+            </div>
+        </div>
+    </main>
+
     <!-- 頁尾 -->
     <footer>
-        <p>&copy; 2026 <span>ANIME.ZONE</span>. Made with ❤️ for Otaku.</p>
+        <p>&copy; 2026 <span>ANIME.ZONE</span>. All Rights Reserved.</p>
     </footer>
 
 </body>
